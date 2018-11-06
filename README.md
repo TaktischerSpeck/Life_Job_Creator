@@ -2,6 +2,24 @@
 
 This is a small tool to simply create all config entries for new farming jobs in the [Altis Life RPG Framework](https://github.com/AsYetUntitled/Framework/) by <b>TAW_Tonic</b> and maintained by <b>AsYetUntitled</b>
 
+Table of contents
+=================
+
+<!--ts-->
+   * [Life Job Creator](#life-job-creator)
+   * [Table of contents](#table-of-contents)
+   * [Getting Started](#getting-started)
+   * [Prerequisites](#prerequisites)
+   * [Installing](#installing)
+      * [Deployment](#deployment)
+   * [Built With](#built-with)
+   * [Contributing](#contributing)
+   * [Versioning](#versioning)
+   * [Authors](#authors)
+   * [License](#license)
+   * [Acknowledgments](#acknowledgments)
+<!--te-->
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
