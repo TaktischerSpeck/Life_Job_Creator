@@ -656,7 +656,7 @@ public class JobCreator {
 	    
 	    /* |||||||||||||||||||||||||STRING|||||||||||||||||||||||||||||||*/
 	    
-	    bw.write("||||stringtable.xml||||");
+	    bw.write("//////// stringtable.xml \\\\\\\\\\\\\\\\");
 	    bw.newLine();
 	    bw.newLine();
 	    
@@ -693,7 +693,7 @@ public class JobCreator {
 	    
 	    bw.newLine();
 	    bw.newLine();
-	    bw.write("||||Config_Gather.hpp||||");
+	    bw.write("//////// Config_Gather.hpp \\\\\\\\\\\\\\\\");
 	    bw.newLine();
 	    bw.newLine();
 	    
@@ -712,7 +712,7 @@ public class JobCreator {
 	    /* |||||||||||||||||||||||||LIZENE|||||||||||||||||||||||||||||||*/
 	    bw.newLine();
 	    bw.newLine();
-	    bw.write("||||Config_Licenses.hpp||||");
+	    bw.write("//////// Config_Licenses.hpp \\\\\\\\\\\\\\\\");
 	    bw.newLine();
 	    bw.newLine();
 	    
@@ -733,7 +733,7 @@ public class JobCreator {
 	    /* |||||||||||||||||||||||||Prozess|||||||||||||||||||||||||||||||*/
 	    bw.newLine();
 	    bw.newLine();
-	    bw.write("||||Config_Process.hpp||||");
+	    bw.write("//////// Config_Process.hpp \\\\\\\\\\\\\\\\");
 	    bw.newLine();
 	    bw.newLine();
 	    
@@ -752,7 +752,7 @@ public class JobCreator {
 	    /* |||||||||||||||||||||||||vItem|||||||||||||||||||||||||||||||*/
 	    bw.newLine();
 	    bw.newLine();
-	    bw.write("||||Config_vItems.hpp||||");
+	    bw.write("//////// Config_vItems.hpp \\\\\\\\\\\\\\\\");
 	    bw.newLine();
 	    bw.newLine();
 	    
@@ -803,7 +803,7 @@ public class JobCreator {
 	    /* |||||||||||||||||||||||||NPC|||||||||||||||||||||||||||||||*/
 	    bw.newLine();
 	    bw.newLine();
-	    bw.write("||||NPC Init||||");
+	    bw.write("//////// NPC Init \\\\\\\\");
 	    bw.newLine();
 	    bw.newLine();
 	    
