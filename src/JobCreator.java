@@ -17,51 +17,82 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Color;
 import javax.swing.SwingConstants;
-import java.awt.Window.Type;
 import javax.swing.JPanel;
 
 public class JobCreator {
-
+	
+	//JLabel
+	JLabel lbl_variable_name;
+	JLabel lbl_gather_amount;
+	JLabel lbl_gather_zone;
+	JLabel lbl_gather_zone_size;
+	JLabel lbl_gather_item;
+	JLabel lbl_license_name;
+	JLabel lbl_license_price;
+	JLabel lbl_license_illegal;
+	JLabel lbl_license_side;
+	JLabel lbl_amount_before_processed;
+	JLabel lbl_amount_after_processed;
+	JLabel lbl_process_text;
+	JLabel lbl_license_cost;
+	JLabel lbl_item_name;
+	JLabel lbl_item_mass;
+	JLabel lbl_item_buy_price;
+	JLabel lbl_item_sell_price;
+	JLabel lbl_item_illegal;
+	JLabel lbl_item_edible;
+	JLabel lbl_item_icon_path;
+	JLabel lbl_Item_unprocessed;
+	JLabel lbl_Item_processed;
+	JLabel lbl_license_settings;
+	JLabel lbl_Gather_settings;
+	JLabel lbl_Item_settings;
+	JLabel lbl_process_settings;
+	
+	//JFrame
 	private JFrame frmItemcreatorVBy;
-	private JTextField tf_variable_name;
-	private JTextField tf_gather_amount;
-	private JTextField tf_gather_zone;
-	private JTextField tf_gather_zone_range;
-	private JTextField tf_gather_item;
-	private JCheckBox chb_item_standart;
-	private JTextField tf_license_name;
-	private JTextField tf_license_price;
-	private boolean is_illegal, is_illegal_item, is_illegal_item2;
-	private String side = "civ";
-	private JTextField tf_amount_before_processed;
-	private JTextField tf_amount_after_processed;
-	private JTextField tf_license_cost;
-	private JTextField tf_process_text;
-	private JTextField tf_unprocessed_mass;
-	private JTextField tf_unprocessed_buy_price;
-	private JTextField tf_unprocessed_sell_price;
-	private JTextField tf_unprocessed_icon_path;
-	private JCheckBox cb_unprocessed_illegal;
-	private JTextField tf_unprocessed_name;
-	private JTextField tf_processed_mass;
-	private JTextField tf_processed_buy_price;
-	private JTextField tf_processed_sell_price;
-	private JTextField tf_processed_icon_path;
-	private JCheckBox cb_processed_illegal;
-	private JTextField tf_processed_name;
-	private JLabel lbl_item_name;
-	private JLabel lbl_item_mass;
-	private JLabel lbl_item_buy_price;
-	private JLabel lbl_item_sell_price;
-	private JLabel lbl_item_illegal;
-	private JLabel lbl_item_edible;
-	private JLabel lbl_item_icon_path;
-	private JLabel lbl_Item_unprocessed;
-	private JLabel lbl_Item_processed;
-	private JTextField tf_unprocessed_edible;
-	private JTextField tf_processed_edible;
+	
+	//JPanel
 	private JPanel panel_7;
 	private JPanel panel_8;
+	
+	//JTextField
+	JTextField tf_variable_name;
+	JTextField tf_gather_amount;
+	JTextField tf_gather_zone;
+	JTextField tf_gather_zone_range;
+	JTextField tf_gather_item;
+	JTextField tf_license_name;
+	JTextField tf_license_price;
+	JTextField tf_amount_before_processed;
+	JTextField tf_amount_after_processed;
+	JTextField tf_license_cost;
+	JTextField tf_process_text;
+	JTextField tf_unprocessed_mass;
+	JTextField tf_unprocessed_buy_price;
+	JTextField tf_unprocessed_sell_price;
+	JTextField tf_unprocessed_icon_path;
+	JCheckBox cb_unprocessed_illegal;
+	JTextField tf_unprocessed_name;
+	JTextField tf_processed_mass;
+	JTextField tf_processed_buy_price;
+	JTextField tf_processed_sell_price;
+	JTextField tf_processed_icon_path;
+	JTextField tf_processed_name;
+	JTextField tf_unprocessed_edible;
+	JTextField tf_processed_edible;
+	
+	//JButton
+	private JButton btn_englisch;
+	private JButton btn_german;
+	
+	//JCheckbox
+	private JCheckBox chb_item_standart;
+	private JCheckBox cb_processed_illegal;
+	
+	//Variablen
+	private boolean is_illegal, is_illegal_item, is_illegal_item2, german=true;
+	private String side = "civ";
 
 	/**
 	 * Launch the application.
@@ -106,12 +137,12 @@ public class JobCreator {
 		frmItemcreatorVBy.getContentPane().add(tf_variable_name);
 		tf_variable_name.setColumns(10);
 		
-		JLabel lbl_variable_name = new JLabel("Variabel Name");
+		lbl_variable_name = new JLabel("Variabel Name");
 		lbl_variable_name.setFont(new Font("Arial", Font.BOLD, 13));
 		lbl_variable_name.setBounds(405, 436, 95, 19);
 		frmItemcreatorVBy.getContentPane().add(lbl_variable_name);
 		
-		JLabel lbl_gather_amount = new JLabel("Anzahl");
+		lbl_gather_amount = new JLabel("Anzahl");
 		lbl_gather_amount.setFont(new Font("Arial", Font.BOLD, 13));
 		lbl_gather_amount.setBounds(62, 65, 85, 16);
 		frmItemcreatorVBy.getContentPane().add(lbl_gather_amount);
@@ -121,7 +152,7 @@ public class JobCreator {
 		frmItemcreatorVBy.getContentPane().add(tf_gather_amount);
 		tf_gather_amount.setColumns(10);
 		
-		JLabel lbl_gather_zone = new JLabel("Abbauzone");
+		lbl_gather_zone = new JLabel("Abbauzone");
 		lbl_gather_zone.setFont(new Font("Arial", Font.BOLD, 13));
 		lbl_gather_zone.setBounds(62, 100, 85, 16);
 		frmItemcreatorVBy.getContentPane().add(lbl_gather_zone);
@@ -131,7 +162,7 @@ public class JobCreator {
 		frmItemcreatorVBy.getContentPane().add(tf_gather_zone);
 		tf_gather_zone.setColumns(10);
 		
-		JLabel lbl_gather_zone_size = new JLabel("Zonen Gr\u00F6\u00DFe");
+		lbl_gather_zone_size = new JLabel("Zonen Gr\u00F6\u00DFe");
 		lbl_gather_zone_size.setFont(new Font("Arial", Font.BOLD, 13));
 		lbl_gather_zone_size.setBounds(62, 135, 85, 16);
 		frmItemcreatorVBy.getContentPane().add(lbl_gather_zone_size);
@@ -147,7 +178,7 @@ public class JobCreator {
 		frmItemcreatorVBy.getContentPane().add(tf_gather_item);
 		tf_gather_item.setColumns(10);
 		
-		JLabel lbl_gather_item = new JLabel("Abbau Item");
+		lbl_gather_item = new JLabel("Abbau Item");
 		lbl_gather_item.setFont(new Font("Arial", Font.BOLD, 13));
 		lbl_gather_item.setBounds(62, 170, 85, 16);
 		frmItemcreatorVBy.getContentPane().add(lbl_gather_item);
@@ -185,21 +216,21 @@ public class JobCreator {
 		frmItemcreatorVBy.getContentPane().add(chb_item_standart);
 		
 		tf_license_name = new JTextField();
-		tf_license_name.setBounds(469, 246, 116, 22);
+		tf_license_name.setBounds(486, 246, 116, 22);
 		frmItemcreatorVBy.getContentPane().add(tf_license_name);
 		tf_license_name.setColumns(10);
 		
-		JLabel lbl_license_name = new JLabel("Lizenz Name");
+		lbl_license_name = new JLabel("Lizenz Name");
 		lbl_license_name.setFont(new Font("Arial", Font.BOLD, 13));
 		lbl_license_name.setBounds(379, 248, 97, 16);
 		frmItemcreatorVBy.getContentPane().add(lbl_license_name);
 		
 		tf_license_price = new JTextField();
-		tf_license_price.setBounds(469, 279, 116, 22);
+		tf_license_price.setBounds(486, 279, 116, 22);
 		frmItemcreatorVBy.getContentPane().add(tf_license_price);
 		tf_license_price.setColumns(10);
 		
-		JLabel lbl_license_price = new JLabel("Lizenz Preis");
+		lbl_license_price = new JLabel("Lizenz Preis");
 		lbl_license_price.setFont(new Font("Arial", Font.BOLD, 13));
 		lbl_license_price.setBounds(379, 281, 97, 16);
 		frmItemcreatorVBy.getContentPane().add(lbl_license_price);
@@ -220,41 +251,37 @@ public class JobCreator {
 		chckbx_license_illegal.setBounds(469, 317, 113, 25);
 		frmItemcreatorVBy.getContentPane().add(chckbx_license_illegal);
 		
-		JLabel lbl_license_illegal = new JLabel("Illegal");
+		lbl_license_illegal = new JLabel("Illegal");
 		lbl_license_illegal.setFont(new Font("Arial", Font.BOLD, 13));
 		lbl_license_illegal.setBounds(379, 321, 56, 16);
 		frmItemcreatorVBy.getContentPane().add(lbl_license_illegal);
 		
-		JComboBox cobo_license_side = new JComboBox();
+		JComboBox<Object> cobo_license_side = new JComboBox<Object>();
 		cobo_license_side.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (cobo_license_side.getSelectedItem() == "civ") {
-					System.out.println("CIV");
 					side = "civ";
 				}
 				
 				if (cobo_license_side.getSelectedItem() == "cop") {
-					System.out.println("cop");
 					side = "cop";
 				}
 				
 				if (cobo_license_side.getSelectedItem() == "med") {
-					System.out.println("med");
 					side = "med";
 				}
 				
 				if (cobo_license_side.getSelectedItem() == "adac") {
-					System.out.println("adac");
 					side = "adac";
 				}
 			}
 		});
-		cobo_license_side.setModel(new DefaultComboBoxModel(new String[] {"civ", "cop", "med", "adac"}));
+		cobo_license_side.setModel(new DefaultComboBoxModel<Object>(new String[] {"civ", "cop", "med", "adac"}));
 		cobo_license_side.setFont(new Font("Arial", Font.BOLD, 13));
 		cobo_license_side.setBounds(469, 349, 116, 22);
 		frmItemcreatorVBy.getContentPane().add(cobo_license_side);
 		
-		JLabel lbl_license_side = new JLabel("Fraktion");
+		lbl_license_side = new JLabel("Fraktion");
 		lbl_license_side.setFont(new Font("Arial", Font.BOLD, 13));
 		lbl_license_side.setBounds(379, 352, 56, 16);
 		frmItemcreatorVBy.getContentPane().add(lbl_license_side);
@@ -269,22 +296,22 @@ public class JobCreator {
 		frmItemcreatorVBy.getContentPane().add(tf_amount_after_processed);
 		tf_amount_after_processed.setColumns(10);
 		
-		JLabel lbl_amount_before_processed = new JLabel("Anzahl unverarbeitet");
+		lbl_amount_before_processed = new JLabel("Anzahl unverarbeitet");
 		lbl_amount_before_processed.setFont(new Font("Arial", Font.BOLD, 13));
 		lbl_amount_before_processed.setBounds(385, 65, 142, 16);
 		frmItemcreatorVBy.getContentPane().add(lbl_amount_before_processed);
 		
-		JLabel lbl_amount_after_processed = new JLabel("Anzahl verarbeitet");
+		lbl_amount_after_processed = new JLabel("Anzahl verarbeitet");
 		lbl_amount_after_processed.setFont(new Font("Arial", Font.BOLD, 13));
 		lbl_amount_after_processed.setBounds(385, 100, 142, 16);
 		frmItemcreatorVBy.getContentPane().add(lbl_amount_after_processed);
 		
-		JLabel lbl_process_text = new JLabel("Ladebalken Schrift");
+		lbl_process_text = new JLabel("Ladebalken Schrift");
 		lbl_process_text.setFont(new Font("Arial", Font.BOLD, 13));
 		lbl_process_text.setBounds(385, 135, 142, 16);
 		frmItemcreatorVBy.getContentPane().add(lbl_process_text);
 		
-		JLabel lbl_license_cost = new JLabel("Keine Lizenz kosten");
+		lbl_license_cost = new JLabel("Keine Lizenz kosten");
 		lbl_license_cost.setToolTipText("LOOOOLLL");
 		lbl_license_cost.setFont(new Font("Arial", Font.BOLD, 13));
 		lbl_license_cost.setBounds(385, 168, 142, 16);
@@ -429,25 +456,25 @@ public class JobCreator {
 		lbl_Item_processed.setBounds(249, 248, 100, 16);
 		frmItemcreatorVBy.getContentPane().add(lbl_Item_processed);
 		
-		JLabel lbl_license_settings = new JLabel("Lizenz Einstellungen");
+		lbl_license_settings = new JLabel("Lizenz Einstellungen");
 		lbl_license_settings.setFont(new Font("Arial", Font.BOLD, 16));
 		lbl_license_settings.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_license_settings.setBounds(379, 218, 223, 19);
 		frmItemcreatorVBy.getContentPane().add(lbl_license_settings);
 		
-		JLabel lbl_Gather_settings = new JLabel("Gather Einstellungen");
+		lbl_Gather_settings = new JLabel("Gather Einstellungen");
 		lbl_Gather_settings.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_Gather_settings.setFont(new Font("Arial", Font.BOLD, 16));
 		lbl_Gather_settings.setBounds(59, 15, 223, 19);
 		frmItemcreatorVBy.getContentPane().add(lbl_Gather_settings);
 		
-		JLabel lbl_Item_settings = new JLabel("Item Einstellungen");
+		lbl_Item_settings = new JLabel("Item Einstellungen");
 		lbl_Item_settings.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_Item_settings.setFont(new Font("Arial", Font.BOLD, 16));
 		lbl_Item_settings.setBounds(15, 218, 371, 19);
 		frmItemcreatorVBy.getContentPane().add(lbl_Item_settings);
 		
-		JLabel lbl_process_settings = new JLabel("Verarbeiter Einstellungen");
+		lbl_process_settings = new JLabel("Verarbeiter Einstellungen");
 		lbl_process_settings.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_process_settings.setFont(new Font("Arial", Font.BOLD, 16));
 		lbl_process_settings.setBounds(385, 15, 270, 19);
@@ -509,22 +536,88 @@ public class JobCreator {
 		panel_8.setBounds(359, 382, 316, 10);
 		frmItemcreatorVBy.getContentPane().add(panel_8);
 		
-		JButton btn_Deutsch = new JButton("Deutsch");
-		btn_Deutsch.setFont(new Font("Arial", Font.BOLD, 16));
-		btn_Deutsch.setBounds(685, 21, 150, 50);
-		frmItemcreatorVBy.getContentPane().add(btn_Deutsch);
-		
-		JButton btn_Englisch = new JButton("Englisch");
-		btn_Englisch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		btn_german = new JButton("Deutsch");
+		btn_german.setEnabled(false);
+		btn_german.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btn_german.setEnabled(false);
+				btn_englisch.setEnabled(true);
+				lbl_variable_name.setText("Variabel Name");
+				lbl_gather_amount.setText("Anzahl");
+				lbl_gather_zone.setText("Abbauzone");
+				lbl_gather_zone_size.setText("Zonen Gr\u00F6\u00DFe");
+				lbl_gather_item.setText("Abbau Item");
+				lbl_license_name.setText("Lizenz Name");
+				lbl_license_price.setText("Lizenz Preis");
+				lbl_license_illegal.setText("Illegal");
+				lbl_license_side.setText("Fraktion");
+				lbl_amount_before_processed.setText("Anzahl unverarbeitet");
+				lbl_amount_after_processed.setText("Anzahl verarbeitet");
+				lbl_process_text.setText("Ladebalken Schrift");
+				lbl_license_cost.setText("Lizenz kosten");
+				lbl_item_name.setText("Item Name");
+				lbl_item_mass.setText("Gewicht");
+				lbl_item_buy_price.setText("Kaufpreis");
+				lbl_item_sell_price.setText("Verkaufspreis");
+				lbl_item_illegal.setText("Illegal");
+				lbl_item_edible.setText("Essbar");
+				lbl_item_icon_path.setText("Icon Pfad");
+				lbl_Item_unprocessed.setText("Item (UP)");
+				lbl_Item_processed.setText("Item (P)");
+				lbl_license_settings.setText("Lizenz Einstellungen");
+				lbl_Gather_settings.setText("Gather Einstellungen");
+				lbl_Item_settings.setText("Item Einstellungen");
+				lbl_process_settings.setText("Verarbeiter Einstellungen");
 				
+				btn_generate.setText("Erstellen");
 				
+				german=true;
 			}
 		});
-		btn_Englisch.setEnabled(false);
-		btn_Englisch.setFont(new Font("Arial", Font.BOLD, 16));
-		btn_Englisch.setBounds(685, 82, 150, 50);
-		frmItemcreatorVBy.getContentPane().add(btn_Englisch);
+		btn_german.setFont(new Font("Arial", Font.BOLD, 16));
+		btn_german.setBounds(685, 21, 150, 50);
+		frmItemcreatorVBy.getContentPane().add(btn_german);
+		
+		btn_englisch = new JButton("English");
+		btn_englisch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				btn_englisch.setEnabled(false);
+				btn_german.setEnabled(true);
+				lbl_variable_name.setText("Variabel name");
+				lbl_gather_amount.setText("Amount");
+				lbl_gather_zone.setText("Gather zone");
+				lbl_gather_zone_size.setText("Zone Radius");
+				lbl_gather_item.setText("Gather Item");
+				lbl_license_name.setText("License name");
+				lbl_license_price.setText("License price");
+				lbl_license_illegal.setText("Illegal");
+				lbl_license_side.setText("fraction");
+				lbl_amount_before_processed.setText("Amount unprocessed");
+				lbl_amount_after_processed.setText("Amount processed");
+				lbl_process_text.setText("loading bar content");
+				lbl_license_cost.setText("License cost");
+				lbl_item_name.setText("Item name");
+				lbl_item_mass.setText("Mass");
+				lbl_item_buy_price.setText("Buy price");
+				lbl_item_sell_price.setText("Sell price");
+				lbl_item_illegal.setText("Illegal");
+				lbl_item_edible.setText("Edible");
+				lbl_item_icon_path.setText("Icon path");
+				lbl_Item_unprocessed.setText("Item (UP)");
+				lbl_Item_processed.setText("Item (P)");
+				lbl_license_settings.setText("License settings");
+				lbl_Gather_settings.setText("Gather settings");
+				lbl_Item_settings.setText("Item settings");
+				lbl_process_settings.setText("Processe settings");
+				
+				btn_generate.setText("Generate");
+				
+				german=false;
+			}
+		});
+		btn_englisch.setFont(new Font("Arial", Font.BOLD, 16));
+		btn_englisch.setBounds(685, 82, 150, 50);
+		frmItemcreatorVBy.getContentPane().add(btn_englisch);
 	}
 	
 	void gather () throws IOException {
@@ -726,7 +819,12 @@ public class JobCreator {
 	    bw.close();
 	    
 		} catch (Exception e) {
-	        JOptionPane.showMessageDialog( null, "Achte darauf das alle Felder richtig ausgefüllt sind!");
+			if (german) {
+				 JOptionPane.showMessageDialog( null, "Achte darauf das alle Felder richtig ausgefüllt sind!");
+			}
+			if (!german) {
+				JOptionPane.showMessageDialog( null, "Check all fields, one is not correct!");
+			}
 	    }
 	}
 }
