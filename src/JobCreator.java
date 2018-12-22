@@ -1,10 +1,8 @@
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -627,7 +625,7 @@ public class JobCreator {
 		int amount, zone_range, liz_price, anzahl_up, anzahl_p, no_lic_cost, sellPrice, buyPrice, weight, edible, edible2, sellPrice2, buyPrice2, weight2;
 		String var_name, zone, abbau_item, license_name, prozess_name, icon,  icon2, item_up, item_p;
 	    
-	    license_name = tf_license_name.getText();
+		license_name = tf_license_name.getText();
 		var_name = tf_variable_name.getText();
 		amount = Integer.parseInt(tf_gather_amount.getText());
 		zone = tf_gather_zone.getText();
