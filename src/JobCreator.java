@@ -83,6 +83,7 @@ public class JobCreator {
 	//JButton
 	private JButton btn_englisch;
 	private JButton btn_german;
+	private JButton btn_generate;
 	
 	//JCheckbox
 	private JCheckBox chb_item_standart;
@@ -181,7 +182,7 @@ public class JobCreator {
 		lbl_gather_item.setBounds(62, 170, 85, 16);
 		frmItemcreatorVBy.getContentPane().add(lbl_gather_item);
 		
-		JButton btn_generate = new JButton("Erstellen");
+		btn_generate = new JButton("Erstellen");
 		btn_generate.setFont(new Font("Arial", Font.BOLD, 16));
 		btn_generate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -538,38 +539,7 @@ public class JobCreator {
 		btn_german.setEnabled(false);
 		btn_german.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btn_german.setEnabled(false);
-				btn_englisch.setEnabled(true);
-				lbl_variable_name.setText("Variabel Name");
-				lbl_gather_amount.setText("Anzahl");
-				lbl_gather_zone.setText("Abbauzone");
-				lbl_gather_zone_size.setText("Zonen Gr\u00F6\u00DFe");
-				lbl_gather_item.setText("Abbau Item");
-				lbl_license_name.setText("Lizenz Name");
-				lbl_license_price.setText("Lizenz Preis");
-				lbl_license_illegal.setText("Illegal");
-				lbl_license_side.setText("Fraktion");
-				lbl_amount_before_processed.setText("Anzahl unverarbeitet");
-				lbl_amount_after_processed.setText("Anzahl verarbeitet");
-				lbl_process_text.setText("Ladebalken Schrift");
-				lbl_license_cost.setText("Lizenz kosten");
-				lbl_item_name.setText("Item Name");
-				lbl_item_mass.setText("Gewicht");
-				lbl_item_buy_price.setText("Kaufpreis");
-				lbl_item_sell_price.setText("Verkaufspreis");
-				lbl_item_illegal.setText("Illegal");
-				lbl_item_edible.setText("Essbar");
-				lbl_item_icon_path.setText("Icon Pfad");
-				lbl_Item_unprocessed.setText("Item (UP)");
-				lbl_Item_processed.setText("Item (P)");
-				lbl_license_settings.setText("Lizenz Einstellungen");
-				lbl_Gather_settings.setText("Gather Einstellungen");
-				lbl_Item_settings.setText("Item Einstellungen");
-				lbl_process_settings.setText("Verarbeiter Einstellungen");
-				
-				btn_generate.setText("Erstellen");
-				
-				german=true;
+				l_german();
 			}
 		});
 		btn_german.setFont(new Font("Arial", Font.BOLD, 16));
@@ -579,38 +549,7 @@ public class JobCreator {
 		btn_englisch = new JButton("English");
 		btn_englisch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				btn_englisch.setEnabled(false);
-				btn_german.setEnabled(true);
-				lbl_variable_name.setText("Variabel name");
-				lbl_gather_amount.setText("Amount");
-				lbl_gather_zone.setText("Gather zone");
-				lbl_gather_zone_size.setText("Zone Radius");
-				lbl_gather_item.setText("Gather Item");
-				lbl_license_name.setText("License name");
-				lbl_license_price.setText("License price");
-				lbl_license_illegal.setText("Illegal");
-				lbl_license_side.setText("fraction");
-				lbl_amount_before_processed.setText("Amount unprocessed");
-				lbl_amount_after_processed.setText("Amount processed");
-				lbl_process_text.setText("loading bar content");
-				lbl_license_cost.setText("License cost");
-				lbl_item_name.setText("Item name");
-				lbl_item_mass.setText("Mass");
-				lbl_item_buy_price.setText("Buy price");
-				lbl_item_sell_price.setText("Sell price");
-				lbl_item_illegal.setText("Illegal");
-				lbl_item_edible.setText("Edible");
-				lbl_item_icon_path.setText("Icon path");
-				lbl_Item_unprocessed.setText("Item (UP)");
-				lbl_Item_processed.setText("Item (P)");
-				lbl_license_settings.setText("License settings");
-				lbl_Gather_settings.setText("Gather settings");
-				lbl_Item_settings.setText("Item settings");
-				lbl_process_settings.setText("Processe settings");
-				
-				btn_generate.setText("Generate");
-				
-				german=false;
+				l_english();			
 			}
 		});
 		btn_englisch.setFont(new Font("Arial", Font.BOLD, 16));
@@ -824,5 +763,78 @@ public class JobCreator {
 				JOptionPane.showMessageDialog( null, "Check all fields, one is not correct!");
 			}
 	    }
+	}
+	
+	
+	void l_english() {
+		
+		btn_englisch.setEnabled(false);
+		btn_german.setEnabled(true);
+		lbl_variable_name.setText("Variabel name");
+		lbl_gather_amount.setText("Amount");
+		lbl_gather_zone.setText("Gather zone");
+		lbl_gather_zone_size.setText("Zone Radius");
+		lbl_gather_item.setText("Gather Item");
+		lbl_license_name.setText("License name");
+		lbl_license_price.setText("License price");
+		lbl_license_illegal.setText("Illegal");
+		lbl_license_side.setText("fraction");
+		lbl_amount_before_processed.setText("Amount unprocessed");
+		lbl_amount_after_processed.setText("Amount processed");
+		lbl_process_text.setText("loading bar content");
+		lbl_license_cost.setText("License cost");
+		lbl_item_name.setText("Item name");
+		lbl_item_mass.setText("Mass");
+		lbl_item_buy_price.setText("Buy price");
+		lbl_item_sell_price.setText("Sell price");
+		lbl_item_illegal.setText("Illegal");
+		lbl_item_edible.setText("Edible");
+		lbl_item_icon_path.setText("Icon path");
+		lbl_Item_unprocessed.setText("Item (UP)");
+		lbl_Item_processed.setText("Item (P)");
+		lbl_license_settings.setText("License settings");
+		lbl_Gather_settings.setText("Gather settings");
+		lbl_Item_settings.setText("Item settings");
+		lbl_process_settings.setText("Processe settings");
+		
+		btn_generate.setText("Generate");
+		
+		german=false;
+	}
+	
+	void l_german () {
+		
+		btn_german.setEnabled(false);
+		btn_englisch.setEnabled(true);
+		lbl_variable_name.setText("Variabel Name");
+		lbl_gather_amount.setText("Anzahl");
+		lbl_gather_zone.setText("Abbauzone");
+		lbl_gather_zone_size.setText("Zonen Gr\u00F6\u00DFe");
+		lbl_gather_item.setText("Abbau Item");
+		lbl_license_name.setText("Lizenz Name");
+		lbl_license_price.setText("Lizenz Preis");
+		lbl_license_illegal.setText("Illegal");
+		lbl_license_side.setText("Fraktion");
+		lbl_amount_before_processed.setText("Anzahl unverarbeitet");
+		lbl_amount_after_processed.setText("Anzahl verarbeitet");
+		lbl_process_text.setText("Ladebalken Schrift");
+		lbl_license_cost.setText("Lizenz kosten");
+		lbl_item_name.setText("Item Name");
+		lbl_item_mass.setText("Gewicht");
+		lbl_item_buy_price.setText("Kaufpreis");
+		lbl_item_sell_price.setText("Verkaufspreis");
+		lbl_item_illegal.setText("Illegal");
+		lbl_item_edible.setText("Essbar");
+		lbl_item_icon_path.setText("Icon Pfad");
+		lbl_Item_unprocessed.setText("Item (UP)");
+		lbl_Item_processed.setText("Item (P)");
+		lbl_license_settings.setText("Lizenz Einstellungen");
+		lbl_Gather_settings.setText("Gather Einstellungen");
+		lbl_Item_settings.setText("Item Einstellungen");
+		lbl_process_settings.setText("Verarbeiter Einstellungen");
+		
+		btn_generate.setText("Erstellen");
+		
+		german=true;
 	}
 }
