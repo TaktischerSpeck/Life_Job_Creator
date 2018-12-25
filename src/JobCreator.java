@@ -124,7 +124,7 @@ public class JobCreator {
 		frmItemcreatorVBy = new JFrame();
 		frmItemcreatorVBy.setForeground(Color.WHITE);
 		frmItemcreatorVBy.setBackground(Color.WHITE);
-		frmItemcreatorVBy.setTitle("Job creator V1 by TaktischerSpeck (asyetuntitled.de)");
+		frmItemcreatorVBy.setTitle("Job creator V1.5 by TaktischerSpeck (asyetuntitled.de)");
 		frmItemcreatorVBy.getContentPane().setForeground(Color.BLACK);
 		frmItemcreatorVBy.getContentPane().setFont(new Font("Arial", Font.BOLD, 13));
 		frmItemcreatorVBy.setBounds(100, 100, 875, 551);
