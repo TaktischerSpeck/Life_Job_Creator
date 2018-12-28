@@ -26,6 +26,7 @@ Java https://www.java.com/de/download/
 Simply Install Java and than run the .jar file with Java.
 
 !!IMPORTANT!!
+
 Go in your mission and open the Config_vItems.hpp located in [MISSION]\config\Config_vItems.hpp
 
 At the End of the class VirtualShops you got two lines wich should look like this:
