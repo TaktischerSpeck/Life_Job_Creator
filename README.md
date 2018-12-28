@@ -2,6 +2,9 @@
 
 This is a small tool to simply create all config entries for new farming jobs in the [Altis Life RPG Framework](https://github.com/AsYetUntitled/Framework/) by <b>TAW_Tonic</b> and maintained by <b>AsYetUntitled</b>
 
+Version 2 also reads the files and automaticly adds the new content
+
+
 Table of contents
 =================
 
@@ -10,7 +13,6 @@ Table of contents
    * [Table of contents](#table-of-contents)
    * [Prerequisites](#prerequisites)
    * [Installing](#installing)
-   * [Versioning](#versioning)
    * [Authors](#authors)
    * [License](#license)
 <!--te-->
@@ -45,9 +47,6 @@ Just create an new, Empty line.
 
 Its needed that the tool can separate the VirtualShops class from the VirtualItems class.
 
-## Versioning
-
-For the versions available, see the [tags on this repository](https://github.com/TaktischerSpeck/Life_Job_Creato/tags). 
 
 ## Authors
 
