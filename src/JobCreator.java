@@ -219,7 +219,6 @@ public class JobCreator {
 		chb_item_standart.setSelected(true);
 		chb_item_standart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				if (chb_item_standart.isSelected()) {
 					tf_gather_item.setText("pickaxe");
 			    } else {
@@ -254,7 +253,6 @@ public class JobCreator {
 		JCheckBox chckbx_license_illegal = new JCheckBox("Illegal");
 		chckbx_license_illegal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
 				if (chckbx_license_illegal.isSelected()) {
 					is_illegal = true;
 				} else {
@@ -405,7 +403,6 @@ public class JobCreator {
 		cb_processed_illegal.setFont(new Font("Arial", Font.BOLD, 13));
 		cb_processed_illegal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				if (cb_processed_illegal.isSelected()) {
 					is_illegal_item2 = true;
 				} else {
@@ -572,7 +569,6 @@ public class JobCreator {
 		chb_method = new JCheckBox("Alte Methode");
 		chb_method.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
 				if (chb_method.isSelected()) {
 					oldWay = true;
 				} else {
@@ -622,7 +618,7 @@ public class JobCreator {
 		try {
 		    replaceSelected(
 		    		
-			    		"    };\n" + 
+			    		"	};\n" + 
 			    		"};"
 			    		/////////////
 			    		, 
@@ -683,13 +679,13 @@ public class JobCreator {
 		try {
 		    replaceSelected(
 		    		
-			    		"    };\n" + 
+			    		"	};\n" + 
 			    		"};"
 			    		/////////////
 			    		, 
 			    		/////////////
 			    		"	};\n"
-			    		+"	class " +var_name  +"{"
+			    		+"	class " +var_name  +" {"
 			    		+ "\n"
 			    		+"		MaterialsReq[] = {{ \"" +var_name +"_unprocessed\"," +anzahl_up +"}};"
 			    		+"\n"
@@ -716,13 +712,13 @@ public class JobCreator {
 		try {
 		    replaceSelected(
 		    		
-			    		"    };\n" + 
+			    		"	};\n" + 
 			    		"};"
 			    		/////////////
 			    		, 
 			    		/////////////
 			    		"	};\n"
-			    		+"	class " +var_name  +"{"
+			    		+"	class " +var_name  +" {"
 			    		+ "\n"
 			    		+"		variable = \"" +var_name +"\";"
 			    		+"\n"
@@ -751,7 +747,7 @@ public class JobCreator {
 		try {
 		    replaceSelected(
 		    		
-			    		"    };\n"
+			    		"	};\n"
 			    		+ "};"
 			    		/////////////
 			    		, 
@@ -823,33 +819,7 @@ public class JobCreator {
 	}
 
 	void get_var(){
-		
-		amount =  0;
-		zone_range =  0;
-		liz_price =  0;
-		anzahl_up =  0;
-		anzahl_p =  0;
-		no_lic_cost =  0;
-		weight =  0;
-		buyPrice =  0;
-		sellPrice =  0;
-		weight2 =  0;
-		buyPrice2 =  0;
-		sellPrice2 =  0;
-		edible =  0;
-		edible2 =  0;
-		
-		prozess_name = "Nichts";
-		path_to_mission = "Nichts";
-		icon2 = "Nichts";
-		icon = "Nichts";
-		item_up = "Nichts";
-		item_p = "Nichts";
-		abbau_item = "Nichts";
-		zone = "Nichts";
-		license_name = "Nichts";
-		var_name = "Nichts";
-		
+
 		amount = Integer.parseInt(tf_gather_amount.getText());
 		zone_range = Integer.parseInt(tf_gather_zone_range.getText());
 		liz_price = Integer.parseInt(tf_license_price.getText());
@@ -1159,11 +1129,7 @@ public class JobCreator {
 
 	        file.close();
 	        
-	        System.out.println(inputStr); // check that it's inputted right
-
 	        inputStr = inputStr.replace(replace, With); 
-
-	        System.out.println("----------------------------------\n"  + inputStr);
 	        
 	        FileOutputStream fileOut = new FileOutputStream(InFile);
 	        fileOut.write(inputStr.getBytes());
