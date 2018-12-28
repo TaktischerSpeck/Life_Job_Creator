@@ -1,3 +1,5 @@
+[![GitHub license](https://img.shields.io/github/license/TaktischerSpeck/Life_Job_Creator.svg)](https://github.com/TaktischerSpeck/Life_Job_Creator/edit/master/LICENSE)[![GitHub release](https://img.shields.io/github/release/TaktischerSpeck/Life_Job_Creator.svg)](https://GitHub.com/TaktischerSpeck/Life_Job_Creator/releases/)[![GitHub contributors](https://img.shields.io/github/contributors/Naereen/StrapDown.js.svg)](https://GitHub.com/TaktischerSpeck/Life_Job_Creator/graphs/contributors/)[![GitHub issues](https://img.shields.io/github/issues/TaktischerSpeck/Life_Job_Creator.svg)](https://GitHub.com/TaktischerSpeck/Life_Job_Creator/issues/)
+
 # Life Job Creator
 
 This is a small tool to simply create all config entries for new farming jobs in the [Altis Life RPG Framework](https://github.com/AsYetUntitled/Framework/) by <b>TAW_Tonic</b> and maintained by <b>AsYetUntitled</b>
@@ -45,7 +47,7 @@ change them to:
 
 Just create an new, Empty line.
 
-Its needed that the tool can separate the VirtualShops class from the VirtualItems class.
+It's needed that the tool can separate the VirtualShops class from the VirtualItems class.
 </b>
 ## Authors
 
@@ -56,5 +58,4 @@ See also the list of [contributors](https://github.com/TaktischerSpeck/Life_Job_
 
 ## License
 
-~~This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details~~
-**TBD**
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details
