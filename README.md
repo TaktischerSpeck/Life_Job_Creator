@@ -8,66 +8,40 @@ Table of contents
 <!--ts-->
    * [Life Job Creator](#life-job-creator)
    * [Table of contents](#table-of-contents)
-   * [Getting Started](#getting-started)
    * [Prerequisites](#prerequisites)
    * [Installing](#installing)
-      * [Deployment](#deployment)
-   * [Built With](#built-with)
-   * [Contributing](#contributing)
    * [Versioning](#versioning)
    * [Authors](#authors)
    * [License](#license)
-   * [Acknowledgments](#acknowledgments)
 <!--te-->
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-~~What things you need to install the software and how to install them~~
+Version 5.0 of [Altis Life RPG Framework](https://github.com/AsYetUntitled/Framework/) by <b>TAW_Tonic</b>
 
-```
-Give examples
-```
-**TBD**
+Java https://www.java.com/de/download/
 
 ### Installing
 
-~~A step by step series of examples that tell you how to get a development env running
+Simply Install Java and than run the .jar file with Java.
 
-~~Say what the step will be
+!!IMPORTANT!!
+Go in your mission and open the Config_vItems.hpp located in [MISSION]\config\Config_vItems.hpp
 
-```
-~~Give the example~~
-```
+At the End of the class VirtualShops you got two lines wich should look like this:
+    
+    };
+};
 
-~~And repeat~~
+change them to:
+    
+    };
+    
+};
 
-```
-~~until finished~~
-```
+Just create an new, Empty line.
 
-~~End with an example of getting some data out of the system or using it for a little demo~~
-**TBD**
-
-## Deployment
-
-~~Add additional notes about how to deploy this on a live system~~
-**TBD**
-
-## Built With
-
-~~* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds~~
-**TBD**
-
-## Contributing
-
-~~Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.~~
-**TBD**
+Its needed that the tool can separate the VirtualShops class from the VirtualItems class.
 
 ## Versioning
 
@@ -84,10 +58,3 @@ See also the list of [contributors](https://github.com/TaktischerSpeck/Life_Job_
 
 ~~This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details~~
 **TBD**
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-
