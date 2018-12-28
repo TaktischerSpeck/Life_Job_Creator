@@ -6,7 +6,10 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
@@ -19,34 +22,6 @@ import javax.swing.JPanel;
 
 public class JobCreator {
 	
-	//JLabel
-	JLabel lbl_variable_name;
-	JLabel lbl_gather_amount;
-	JLabel lbl_gather_zone;
-	JLabel lbl_gather_zone_size;
-	JLabel lbl_gather_item;
-	JLabel lbl_license_name;
-	JLabel lbl_license_price;
-	JLabel lbl_license_illegal;
-	JLabel lbl_license_side;
-	JLabel lbl_amount_before_processed;
-	JLabel lbl_amount_after_processed;
-	JLabel lbl_process_text;
-	JLabel lbl_license_cost;
-	JLabel lbl_item_name;
-	JLabel lbl_item_mass;
-	JLabel lbl_item_buy_price;
-	JLabel lbl_item_sell_price;
-	JLabel lbl_item_illegal;
-	JLabel lbl_item_edible;
-	JLabel lbl_item_icon_path;
-	JLabel lbl_Item_unprocessed;
-	JLabel lbl_Item_processed;
-	JLabel lbl_license_settings;
-	JLabel lbl_Gather_settings;
-	JLabel lbl_Item_settings;
-	JLabel lbl_process_settings;
-	
 	//JFrame
 	private JFrame frmItemcreatorVBy;
 	
@@ -54,31 +29,60 @@ public class JobCreator {
 	private JPanel panel_7;
 	private JPanel panel_8;
 	
+	//JLabel
+	private JLabel lbl_variable_name;
+	private JLabel lbl_gather_amount;
+	private JLabel lbl_gather_zone;
+	private JLabel lbl_gather_zone_size;
+	private JLabel lbl_gather_item;
+	private JLabel lbl_license_name;
+	private JLabel lbl_license_price;
+	private JLabel lbl_license_illegal;
+	private JLabel lbl_license_side;
+	private JLabel lbl_amount_before_processed;
+	private JLabel lbl_amount_after_processed;
+	private JLabel lbl_process_text;
+	private JLabel lbl_license_cost;
+	private JLabel lbl_item_name;
+	private JLabel lbl_item_mass;
+	private JLabel lbl_item_buy_price;
+	private JLabel lbl_item_sell_price;
+	private JLabel lbl_item_illegal;
+	private JLabel lbl_item_edible;
+	private JLabel lbl_item_icon_path;
+	private JLabel lbl_Item_unprocessed;
+	private JLabel lbl_Item_processed;
+	private JLabel lbl_license_settings;
+	private JLabel lbl_Gather_settings;
+	private JLabel lbl_Item_settings;
+	private JLabel lbl_process_settings;
+	private JLabel lbl_path_to_mission;
+	
 	//JTextField
-	JTextField tf_variable_name;
-	JTextField tf_gather_amount;
-	JTextField tf_gather_zone;
-	JTextField tf_gather_zone_range;
-	JTextField tf_gather_item;
-	JTextField tf_license_name;
-	JTextField tf_license_price;
-	JTextField tf_amount_before_processed;
-	JTextField tf_amount_after_processed;
-	JTextField tf_license_cost;
-	JTextField tf_process_text;
-	JTextField tf_unprocessed_mass;
-	JTextField tf_unprocessed_buy_price;
-	JTextField tf_unprocessed_sell_price;
-	JTextField tf_unprocessed_icon_path;
-	JCheckBox cb_unprocessed_illegal;
-	JTextField tf_unprocessed_name;
-	JTextField tf_processed_mass;
-	JTextField tf_processed_buy_price;
-	JTextField tf_processed_sell_price;
-	JTextField tf_processed_icon_path;
-	JTextField tf_processed_name;
-	JTextField tf_unprocessed_edible;
-	JTextField tf_processed_edible;
+	private JTextField tf_variable_name;
+	private JTextField tf_gather_amount;
+	private JTextField tf_gather_zone;
+	private JTextField tf_gather_zone_range;
+	private JTextField tf_gather_item;
+	private JTextField tf_license_name;
+	private JTextField tf_license_price;
+	private JTextField tf_amount_before_processed;
+	private JTextField tf_amount_after_processed;
+	private JTextField tf_license_cost;
+	private JTextField tf_process_text;
+	private JTextField tf_unprocessed_mass;
+	private JTextField tf_unprocessed_buy_price;
+	private JTextField tf_unprocessed_sell_price;
+	private JTextField tf_unprocessed_icon_path;
+	private JTextField tf_unprocessed_name;
+	private JTextField tf_processed_mass;
+	private JTextField tf_processed_buy_price;
+	private JTextField tf_processed_sell_price;
+	private JTextField tf_processed_icon_path;
+	private JTextField tf_processed_name;
+	private JTextField tf_unprocessed_edible;
+	private JTextField tf_processed_edible;
+	private JTextField tf_path_to_mission;
 	
 	//JButton
 	private JButton btn_englisch;
@@ -88,10 +92,13 @@ public class JobCreator {
 	//JCheckbox
 	private JCheckBox chb_item_standart;
 	private JCheckBox cb_processed_illegal;
+	private JCheckBox chb_method;
+	private JCheckBox cb_unprocessed_illegal;
 	
 	//Variablen
-	private boolean is_illegal, is_illegal_item, is_illegal_item2, german=true;
-	private String side = "civ";
+	private boolean is_illegal, is_illegal_item, is_illegal_item2, german=true, oldWay;
+	private String side = "civ", var_name, zone, abbau_item, license_name, prozess_name, icon,  icon2, item_up, item_p, path_to_mission;
+	private int amount, zone_range, liz_price, anzahl_up, anzahl_p, no_lic_cost, sellPrice, buyPrice, weight, edible, edible2, sellPrice2, buyPrice2, weight2;
 
 	/**
 	 * Launch the application.
@@ -186,11 +193,22 @@ public class JobCreator {
 		btn_generate.setFont(new Font("Arial", Font.BOLD, 16));
 		btn_generate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				get_var();
 				
-				try {
-					gather();
-				} catch (IOException e1) {
-					e1.printStackTrace();
+				if (oldWay) {	
+					try {
+						old_way();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				}else {
+					edit_vitems();
+				    edit_licens();
+					edit_process();
+					edit_gather();
+					edit_stringtable();
+					init_map();
 				}
 			}
 		});
@@ -201,12 +219,11 @@ public class JobCreator {
 		chb_item_standart.setSelected(true);
 		chb_item_standart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (chb_item_standart.isSelected()==true) {
-					tf_gather_item.setText("pickaxe");
-			    }
 				
-				if (chb_item_standart.isSelected()==false) {
-					tf_gather_item.setText("");
+				if (chb_item_standart.isSelected()) {
+					tf_gather_item.setText("pickaxe");
+			    } else {
+			    	tf_gather_item.setText("");
 			    }
 			}
 		});
@@ -237,11 +254,10 @@ public class JobCreator {
 		JCheckBox chckbx_license_illegal = new JCheckBox("Illegal");
 		chckbx_license_illegal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (chckbx_license_illegal.isSelected() == true) {
-					is_illegal = true;
-				}
 				
-				if (chckbx_license_illegal.isSelected() == false) {
+				if (chckbx_license_illegal.isSelected()) {
+					is_illegal = true;
+				} else {
 					is_illegal = false;
 				}
 			}
@@ -350,11 +366,9 @@ public class JobCreator {
 		cb_unprocessed_illegal.setFont(new Font("Arial", Font.BOLD, 13));
 		cb_unprocessed_illegal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (cb_unprocessed_illegal.isSelected() == true) {
+				if (cb_unprocessed_illegal.isSelected()) {
 					is_illegal_item = true;
-				}
-				
-				if (cb_unprocessed_illegal.isSelected() == false) {
+				} else {
 					is_illegal_item = false;
 				}
 			}
@@ -391,11 +405,10 @@ public class JobCreator {
 		cb_processed_illegal.setFont(new Font("Arial", Font.BOLD, 13));
 		cb_processed_illegal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (cb_processed_illegal.isSelected() == true) {
-					is_illegal_item2 = true;
-				}
 				
-				if (cb_processed_illegal.isSelected() == false) {
+				if (cb_processed_illegal.isSelected()) {
+					is_illegal_item2 = true;
+				} else {
 					is_illegal_item2 = false;
 				}
 			}
@@ -555,21 +568,290 @@ public class JobCreator {
 		btn_englisch.setFont(new Font("Arial", Font.BOLD, 16));
 		btn_englisch.setBounds(685, 82, 150, 50);
 		frmItemcreatorVBy.getContentPane().add(btn_englisch);
+		
+		chb_method = new JCheckBox("Alte Methode");
+		chb_method.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				if (chb_method.isSelected()) {
+					oldWay = true;
+				} else {
+					oldWay = false;
+				}
+			}
+		});
+		chb_method.setFont(new Font("Arial", Font.BOLD, 13));
+		chb_method.setToolTipText("Erstellt Job Datei (Wie in V1-1.5)");
+		chb_method.setBounds(685, 139, 150, 23);
+		frmItemcreatorVBy.getContentPane().add(chb_method);
+		
+		tf_path_to_mission = new JTextField();
+		tf_path_to_mission.setBounds(685, 219, 150, 20);
+		frmItemcreatorVBy.getContentPane().add(tf_path_to_mission);
+		tf_path_to_mission.setColumns(10);
+		
+		lbl_path_to_mission = new JLabel("Pfad der Mission:");
+		lbl_path_to_mission.setToolTipText("C:\\A3Server\\Life\\mpmissions\\MeinServer.Altis");
+		lbl_path_to_mission.setFont(new Font("Arial", Font.BOLD, 13));
+		lbl_path_to_mission.setBounds(685, 193, 150, 14);
+		frmItemcreatorVBy.getContentPane().add(lbl_path_to_mission);
 	}
 	
-	void gather () throws IOException {
-	
+	void init_map() {
 		try {
+			FileWriter fw = new FileWriter("" +var_name +"_init_for_map.hpp");
+		    BufferedWriter bw = new BufferedWriter(fw);
+		    
+		    bw.newLine();
+		    bw.newLine();
+		    bw.write("//////// NPC Init \\\\\\\\");
+		    bw.newLine();
+		    bw.newLine();
+		    
+		    bw.write("this allowDamage false; this enableSimulation false;");
+		    bw.write("this addAction[localize\"STR_Process_" +var_name +"\",life_fnc_processAction,\"" + var_name +"\",0,false,false,\"\",' life_inv_" +var_name +"_unprocessed > 0 && !life_is_processing && !life_action_inUse'];");
+		    bw.write("this addAction[format [\"%1 ($%2)\",localize (getText(missionConfigFile >> \"Licenses\" >> \"" +var_name +"\" >> \"displayName\")), [(getNumber(missionConfigFile >> \"Licenses\" >> \"" +var_name +"\" >> \"price\"))] call life_fnc_numberText],life_fnc_buyLicense,\"" +var_name +"\",0,false,false,\"\",' !license_civ_" +var_name +" && playerSide isEqualTo civilian '];");
+		    
+		    bw.close();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog( null, "An error contact TaktischerSpeck!");
+		}
+	}
+	
+	void edit_vitems() {
+		try {
+		    replaceSelected(
+		    		
+			    		"    };\n" + 
+			    		"};"
+			    		/////////////
+			    		, 
+			    		/////////////
+			    		"	};\n"
+			    		+"	class " +var_name +"_unprocessed {"
+			    		+"\n"
+			            +"		variable = \"" +var_name +"_unprocessed\""
+			    		+"\n"
+			            +"		displayName = \"STR_Item_" +var_name +"_unprocessed\""
+			    		+"\n"
+			            +"		weight = " +weight +";"
+			    		+"\n"
+			            +"		buyPrice = " +buyPrice +";"
+			    		+"\n"
+			            +"		sellPrice = " +sellPrice +";"
+			    		+"\n"
+			            +"		illegal = " +is_illegal_item +";"
+			    		+"\n"
+			            +"		edible = " +edible +";"
+			    		+"\n"
+			            +"		icon = \"" +icon +"\";"
+			    		+"\n"
+			    		+"	};"
+			    		+"\n"
+			    		
+						+"	class " +var_name +"_processed {"
+						+"\n"
+						+"		variable = \"" +var_name +"_processed\""
+						+"\n"
+						+"		displayName = \"STR_Item_" +var_name +"_processed\""
+						+"\n"
+						+"		weight = " +weight +";"
+						+"\n"
+						+"		buyPrice = " +buyPrice +";"
+						+"\n"
+						+"		sellPrice = " +sellPrice +";"
+						+"\n"
+						+"		illegal = " +is_illegal_item +";"
+						+"\n"
+						+"		edible = " +edible +";"
+						+"\n"
+						+"		icon = \"" +icon +"\";"
+						+"\n"
+						+"	};\n"
+			    		+"};"
+			    		/////////////
+			    		,
+			    		/////////////
+			    		path_to_mission +"\\config\\Config_vItems.hpp"
+		    		);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog( null, "An error contact TaktischerSpeck!");
+		}
+	}
+	
+	void edit_process() {
+		try {
+		    replaceSelected(
+		    		
+			    		"    };\n" + 
+			    		"};"
+			    		/////////////
+			    		, 
+			    		/////////////
+			    		"	};\n"
+			    		+"	class " +var_name  +"{"
+			    		+ "\n"
+			    		+"		MaterialsReq[] = {{ \"" +var_name +"_unprocessed\"," +anzahl_up +"}};"
+			    		+"\n"
+			            +"		MaterialsGive[] = {{ \"" +var_name +"_processed\"," +anzahl_p +"}};"
+			    		+"\n"
+			            +"		Text = \"STR_Process_" +var_name +"\";"
+			    		+"\n"
+			            +"		NoLicenseCost = " +no_lic_cost +";"
+			    		+"\n"
+			    		+"	};"
+			    		+"\n"
+			    		+"};"
+			    		/////////////
+			    		,
+			    		/////////////
+			    		path_to_mission +"\\config\\Config_Process.hpp"
+		    		);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog( null, "An error contact TaktischerSpeck!");
+		}
+	}
+
+	void edit_licens(){
+		try {
+		    replaceSelected(
+		    		
+			    		"    };\n" + 
+			    		"};"
+			    		/////////////
+			    		, 
+			    		/////////////
+			    		"	};\n"
+			    		+"	class " +var_name  +"{"
+			    		+ "\n"
+			    		+"		variable = \"" +var_name +"\";"
+			    		+"\n"
+			    		+"		displayName = \"" +var_name +"\";"
+			    		+"\n"
+			    		+"		price = " +liz_price +";"
+			    		+"\n"
+			    		+"		illegal = " +is_illegal +";"
+			    		+"\n"
+			    		+"		side = \"" +side +"\";"
+			    		+"\n"
+			    		+"	};"
+			    		+"\n"
+			    		+"};"
+			    		/////////////
+			    		,
+			    		/////////////
+			    		path_to_mission +"\\config\\Config_Licenses.hpp"
+		    		);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog( null, "An error contact TaktischerSpeck!");
+		}
+	}
+	
+	void edit_gather(){
+		try {
+		    replaceSelected(
+		    		
+			    		"    };\n"
+			    		+ "};"
+			    		/////////////
+			    		, 
+			    		/////////////
+			    		"		class " +var_name +" {"
+			    		+ "\n"
+			    		+"			amount = " +amount +";"
+			    		+"\n"
+			    		+"			zones[] = { \"" +zone +"\" };"
+			    		+"\n"
+			    		+"			item = \"" +abbau_item +"\";"
+			    		+"\n"
+			    		+"			mined[] = { \"" +var_name +"_unprocessed\" };"
+			    		+"\n"
+			    		+"			zoneSize = " +zone_range +";"
+			    		+"\n"
+			    		+"		};"
+			    		+"\n"
+			    		+"	};"
+			    		+"};"
+			    		/////////////
+			    		,
+			    		/////////////
+			    		path_to_mission +"\\config\\Config_Gather.hpp"
+		    		);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog( null, "An error contact TaktischerSpeck!");
+		}
+	}
+	
+	void edit_stringtable() {
+		try {
+		    replaceSelected(
+		    		
+			    		"</Project>", 
+			    		/////////////
+			    		"	<Package name=\"" +var_name +"\">"
+			    		+ "\n"
+			    		+ "		<Key ID=\"STR_License_" +var_name +"\">"
+			    		+ "\n"
+			    		+ "			<Original>" +license_name +"</Original>"
+			    		+ "\n"
+			    		+ "		</Key>\n"
+			    		+ "		<Key ID=\"STR_Process_" +var_name +"\">"
+			    		+ "\n"
+			    		+ "			<Original>" +prozess_name +"</Original>"
+			    		+ "\n"
+			    		+ "		</Key>\n"
+			    		+ "		<Key ID=\"STR_Item_" +var_name +"_unprocessed\">"
+			    		+ "\n"
+			    		+ "			<Original>" +item_up +"</Original>"
+			    		+ "\n"
+			    		+ "		</Key>\n"
+			    		+ "		<Key ID=\"STR_Item_" +var_name +"_processed\">"
+			    		+ "\n"
+			    		+ "			<Original>" +item_p +"</Original>"
+			    		+ "\n"
+			    		+ "		</Key>"
+			    		+ "\n"
+			    		+ "	</Package>"
+			    		+"\n"
+			    		+"</Project>",
+			    		/////////////
+			    		path_to_mission +"\\stringtable.xml"
+		    		);
+		} catch (Exception e) {
+				JOptionPane.showMessageDialog( null, "An error contact TaktischerSpeck!");
+		}
+	}
+
+	void get_var(){
 		
-		int amount, zone_range, liz_price, anzahl_up, anzahl_p, no_lic_cost, sellPrice, buyPrice, weight, edible, edible2, sellPrice2, buyPrice2, weight2;
-		String var_name, zone, abbau_item, license_name, prozess_name, icon,  icon2, item_up, item_p;
-	    
-		license_name = tf_license_name.getText();
-		var_name = tf_variable_name.getText();
+		amount =  0;
+		zone_range =  0;
+		liz_price =  0;
+		anzahl_up =  0;
+		anzahl_p =  0;
+		no_lic_cost =  0;
+		weight =  0;
+		buyPrice =  0;
+		sellPrice =  0;
+		weight2 =  0;
+		buyPrice2 =  0;
+		sellPrice2 =  0;
+		edible =  0;
+		edible2 =  0;
+		
+		prozess_name = "Nichts";
+		path_to_mission = "Nichts";
+		icon2 = "Nichts";
+		icon = "Nichts";
+		item_up = "Nichts";
+		item_p = "Nichts";
+		abbau_item = "Nichts";
+		zone = "Nichts";
+		license_name = "Nichts";
+		var_name = "Nichts";
+		
 		amount = Integer.parseInt(tf_gather_amount.getText());
-		zone = tf_gather_zone.getText();
 		zone_range = Integer.parseInt(tf_gather_zone_range.getText());
-		abbau_item = tf_gather_item.getText();
 		liz_price = Integer.parseInt(tf_license_price.getText());
 		prozess_name = tf_process_text.getText();
 		anzahl_up = Integer.parseInt(tf_amount_before_processed.getText());
@@ -578,15 +860,25 @@ public class JobCreator {
 		weight = Integer.parseInt(tf_unprocessed_mass.getText());
 		buyPrice = Integer.parseInt(tf_unprocessed_buy_price.getText());
 		sellPrice = Integer.parseInt(tf_unprocessed_sell_price.getText());
-		icon = tf_unprocessed_icon_path.getText();
-		item_up = tf_unprocessed_name.getText();
-		item_p = tf_processed_name.getText();
 		weight2 = Integer.parseInt(tf_processed_mass.getText());
 		buyPrice2 = Integer.parseInt(tf_processed_buy_price.getText());
 		sellPrice2 = Integer.parseInt(tf_processed_sell_price.getText());
-		icon2 = tf_processed_icon_path.getText();
 		edible = Integer.parseInt(tf_unprocessed_edible.getText());
 		edible2 = Integer.parseInt(tf_processed_edible.getText());
+		
+		path_to_mission = tf_path_to_mission.getText();
+		icon2 = tf_processed_icon_path.getText();
+		icon = tf_unprocessed_icon_path.getText();
+		item_up = tf_unprocessed_name.getText();
+		item_p = tf_processed_name.getText();
+		abbau_item = tf_gather_item.getText();
+		zone = tf_gather_zone.getText();
+		license_name = tf_license_name.getText();
+		var_name = tf_variable_name.getText();
+	}
+	
+	void old_way() throws IOException {
+		try {
 		
 		FileWriter fw = new FileWriter("" +var_name +".hpp");
 	    BufferedWriter bw = new BufferedWriter(fw);
@@ -767,7 +1059,6 @@ public class JobCreator {
 	
 	
 	void l_english() {
-		
 		btn_englisch.setEnabled(false);
 		btn_german.setEnabled(true);
 		lbl_variable_name.setText("Variabel name");
@@ -796,14 +1087,22 @@ public class JobCreator {
 		lbl_Gather_settings.setText("Gather settings");
 		lbl_Item_settings.setText("Item settings");
 		lbl_process_settings.setText("Processe settings");
+		lbl_path_to_mission.setText("Path of the mission:");
+		
+		lbl_path_to_mission.setToolTipText("Path to the main directory of the mission. | "
+				 + "Ae. C:\\A3Server\\Life\\mpmissions\\MyServer.Altis");		
+		
+		chb_method.setText("Old method");
+		chb_method.setToolTipText("Creates job file (as in V1-1.5)");
+		chb_item_standart.setText("Standart Gather Item");
 		
 		btn_generate.setText("Generate");
 		
 		german=false;
 	}
 	
+	
 	void l_german () {
-		
 		btn_german.setEnabled(false);
 		btn_englisch.setEnabled(true);
 		lbl_variable_name.setText("Variabel Name");
@@ -831,10 +1130,47 @@ public class JobCreator {
 		lbl_license_settings.setText("Lizenz Einstellungen");
 		lbl_Gather_settings.setText("Gather Einstellungen");
 		lbl_Item_settings.setText("Item Einstellungen");
-		lbl_process_settings.setText("Verarbeiter Einstellungen");
+		lbl_path_to_mission.setText("Pfad der Mission:");
+		
+		lbl_path_to_mission.setToolTipText("Pfad zum Hauptverzeichnis der Mission. | "
+										 + "Zb. C:\\A3Server\\Life\\mpmissions\\MeinServer.Altis");		
+		
+		chb_method.setText("Alte Methode");
+		chb_method.setToolTipText("Erstellt Job Datei (Wie in V1-1.5)");
+		chb_item_standart.setText("Standart Abbau Item");
 		
 		btn_generate.setText("Erstellen");
 		
 		german=true;
+	}
+	
+	public static void replaceSelected(String replace, String With, String InFile) {
+	    try {
+	        BufferedReader file = new BufferedReader(new FileReader(InFile));
+	        String line;
+	        StringBuffer inputBuffer = new StringBuffer();
+
+	        while ((line = file.readLine()) != null) {
+	            inputBuffer.append(line);
+	            inputBuffer.append('\n');
+	        }
+	        
+	        String inputStr = inputBuffer.toString();
+
+	        file.close();
+	        
+	        System.out.println(inputStr); // check that it's inputted right
+
+	        inputStr = inputStr.replace(replace, With); 
+
+	        System.out.println("----------------------------------\n"  + inputStr);
+	        
+	        FileOutputStream fileOut = new FileOutputStream(InFile);
+	        fileOut.write(inputStr.getBytes());
+	        fileOut.close();
+
+	    } catch (Exception e) {
+	        System.out.println("Problem reading file.");
+	    }
 	}
 }
