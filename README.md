@@ -27,7 +27,7 @@ Java https://www.java.com/de/download/
 
 Simply Install Java and than run the .jar file with Java.
 
-!!IMPORTANT!!
+<b>!!IMPORTANT!!
 
 Go in your mission and open the Config_vItems.hpp located in [MISSION]\config\Config_vItems.hpp
 
@@ -46,8 +46,7 @@ change them to:
 Just create an new, Empty line.
 
 Its needed that the tool can separate the VirtualShops class from the VirtualItems class.
-
-
+</b>
 ## Authors
 
 * **Taktischer Speck** - *Initial work*
