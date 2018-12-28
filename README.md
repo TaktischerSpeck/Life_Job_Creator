@@ -29,15 +29,16 @@ Simply Install Java and than run the .jar file with Java.
 Go in your mission and open the Config_vItems.hpp located in [MISSION]\config\Config_vItems.hpp
 
 At the End of the class VirtualShops you got two lines wich should look like this:
-    
+```
     };
 };
-
+```
 change them to:
-    
+```    
     };
     
 };
+```
 
 Just create an new, Empty line.
 
