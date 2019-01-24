@@ -1,0 +1,5 @@
+
+
+//////// NPC Init \\\\
+
+this allowDamage false; this enableSimulation false;this addAction[localize"STR_Process_7",life_fnc_processAction,"7",0,false,false,"",' life_inv_7_unprocessed > 0 && !life_is_processing && !life_action_inUse'];this addAction[format ["%1 ($%2)",localize (getText(missionConfigFile >> "Licenses" >> "7" >> "displayName")), [(getNumber(missionConfigFile >> "Licenses" >> "7" >> "price"))] call life_fnc_numberText],life_fnc_buyLicense,"7",0,false,false,"",' !license_civ_7 && playerSide isEqualTo civilian '];

@@ -593,6 +593,35 @@ public class JobCreator {
 		frmItemcreatorVBy.getContentPane().add(lbl_path_to_mission);
 	}
 	
+	void get_var(){
+
+		amount = Integer.parseInt(tf_gather_amount.getText());
+		zone_range = Integer.parseInt(tf_gather_zone_range.getText());
+		liz_price = Integer.parseInt(tf_license_price.getText());
+		prozess_name = tf_process_text.getText();
+		anzahl_up = Integer.parseInt(tf_amount_before_processed.getText());
+		anzahl_p = Integer.parseInt(tf_amount_after_processed.getText());
+		no_lic_cost = Integer.parseInt(tf_license_cost.getText());
+		weight = Integer.parseInt(tf_unprocessed_mass.getText());
+		buyPrice = Integer.parseInt(tf_unprocessed_buy_price.getText());
+		sellPrice = Integer.parseInt(tf_unprocessed_sell_price.getText());
+		weight2 = Integer.parseInt(tf_processed_mass.getText());
+		buyPrice2 = Integer.parseInt(tf_processed_buy_price.getText());
+		sellPrice2 = Integer.parseInt(tf_processed_sell_price.getText());
+		edible = Integer.parseInt(tf_unprocessed_edible.getText());
+		edible2 = Integer.parseInt(tf_processed_edible.getText());
+		
+		path_to_mission = tf_path_to_mission.getText();
+		icon2 = tf_processed_icon_path.getText();
+		icon = tf_unprocessed_icon_path.getText();
+		item_up = tf_unprocessed_name.getText();
+		item_p = tf_processed_name.getText();
+		abbau_item = tf_gather_item.getText();
+		zone = tf_gather_zone.getText();
+		license_name = tf_license_name.getText();
+		var_name = tf_variable_name.getText();
+	}
+	
 	void init_map() {
 		try {
 			FileWriter fw = new FileWriter("" +var_name +"_init_for_map.hpp");
@@ -618,12 +647,12 @@ public class JobCreator {
 		try {
 		    replaceSelected(
 		    		
-			    		"	};\n" + 
+			    		"    };\n" + 
 			    		"};"
 			    		/////////////
 			    		, 
 			    		/////////////
-			    		"	};\n"
+			    		"    };\n\n"
 			    		+"	class " +var_name +"_unprocessed {"
 			    		+"\n"
 			            +"		variable = \"" +var_name +"_unprocessed\""
@@ -642,7 +671,7 @@ public class JobCreator {
 			    		+"\n"
 			            +"		icon = \"" +icon +"\";"
 			    		+"\n"
-			    		+"	};"
+			    		+"    };\n"
 			    		+"\n"
 			    		
 						+"	class " +var_name +"_processed {"
@@ -663,7 +692,7 @@ public class JobCreator {
 						+"\n"
 						+"		icon = \"" +icon +"\";"
 						+"\n"
-						+"	};\n"
+						+"    };\n"
 			    		+"};"
 			    		/////////////
 			    		,
@@ -684,7 +713,7 @@ public class JobCreator {
 			    		/////////////
 			    		, 
 			    		/////////////
-			    		"	};\n"
+			    		"	};\n\n"
 			    		+"	class " +var_name  +" {"
 			    		+ "\n"
 			    		+"		MaterialsReq[] = {{ \"" +var_name +"_unprocessed\"," +anzahl_up +"}};"
@@ -695,8 +724,7 @@ public class JobCreator {
 			    		+"\n"
 			            +"		NoLicenseCost = " +no_lic_cost +";"
 			    		+"\n"
-			    		+"	};"
-			    		+"\n"
+			    		+"	};\n"
 			    		+"};"
 			    		/////////////
 			    		,
@@ -712,12 +740,12 @@ public class JobCreator {
 		try {
 		    replaceSelected(
 		    		
-			    		"	};\n" + 
-			    		"};"
+			    		"    };\n" 
+			    		+"};"
 			    		/////////////
 			    		, 
 			    		/////////////
-			    		"	};\n"
+			    		"    };\n\n"
 			    		+"	class " +var_name  +" {"
 			    		+ "\n"
 			    		+"		variable = \"" +var_name +"\";"
@@ -730,8 +758,7 @@ public class JobCreator {
 			    		+"\n"
 			    		+"		side = \"" +side +"\";"
 			    		+"\n"
-			    		+"	};"
-			    		+"\n"
+			    		+"    };\n"
 			    		+"};"
 			    		/////////////
 			    		,
@@ -747,12 +774,13 @@ public class JobCreator {
 		try {
 		    replaceSelected(
 		    		
-			    		"	};\n"
+			    		"    };\n"
 			    		+ "};"
 			    		/////////////
 			    		, 
 			    		/////////////
-			    		"		class " +var_name +" {"
+			    		"\n"
+			    		+"		class " +var_name +" {"
 			    		+ "\n"
 			    		+"			amount = " +amount +";"
 			    		+"\n"
@@ -766,7 +794,7 @@ public class JobCreator {
 			    		+"\n"
 			    		+"		};"
 			    		+"\n"
-			    		+"	};"
+			    		+"    };\n"
 			    		+"};"
 			    		/////////////
 			    		,
@@ -816,35 +844,6 @@ public class JobCreator {
 		} catch (Exception e) {
 				JOptionPane.showMessageDialog( null, "An error contact TaktischerSpeck!");
 		}
-	}
-
-	void get_var(){
-
-		amount = Integer.parseInt(tf_gather_amount.getText());
-		zone_range = Integer.parseInt(tf_gather_zone_range.getText());
-		liz_price = Integer.parseInt(tf_license_price.getText());
-		prozess_name = tf_process_text.getText();
-		anzahl_up = Integer.parseInt(tf_amount_before_processed.getText());
-		anzahl_p = Integer.parseInt(tf_amount_after_processed.getText());
-		no_lic_cost = Integer.parseInt(tf_license_cost.getText());
-		weight = Integer.parseInt(tf_unprocessed_mass.getText());
-		buyPrice = Integer.parseInt(tf_unprocessed_buy_price.getText());
-		sellPrice = Integer.parseInt(tf_unprocessed_sell_price.getText());
-		weight2 = Integer.parseInt(tf_processed_mass.getText());
-		buyPrice2 = Integer.parseInt(tf_processed_buy_price.getText());
-		sellPrice2 = Integer.parseInt(tf_processed_sell_price.getText());
-		edible = Integer.parseInt(tf_unprocessed_edible.getText());
-		edible2 = Integer.parseInt(tf_processed_edible.getText());
-		
-		path_to_mission = tf_path_to_mission.getText();
-		icon2 = tf_processed_icon_path.getText();
-		icon = tf_unprocessed_icon_path.getText();
-		item_up = tf_unprocessed_name.getText();
-		item_p = tf_processed_name.getText();
-		abbau_item = tf_gather_item.getText();
-		zone = tf_gather_zone.getText();
-		license_name = tf_license_name.getText();
-		var_name = tf_variable_name.getText();
 	}
 	
 	void old_way() throws IOException {
@@ -1026,8 +1025,7 @@ public class JobCreator {
 			}
 	    }
 	}
-	
-	
+		
 	void l_english() {
 		btn_englisch.setEnabled(false);
 		btn_german.setEnabled(true);
@@ -1070,7 +1068,6 @@ public class JobCreator {
 		
 		german=false;
 	}
-	
 	
 	void l_german () {
 		btn_german.setEnabled(false);
